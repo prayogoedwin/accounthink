@@ -27,7 +27,7 @@ return new class() extends Migration
             $t->timestamp('approved_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['team_id', 'status', 'next_run_on']);
+            $t->index(['team_id', 'status', 'next_run_on'], 'ix_3dc443dd8d5f');
         });
         Schema::create('accounting_recurring_transaction_occurrences', function (Blueprint $t): void {
             $t->id();
@@ -40,20 +40,20 @@ return new class() extends Migration
             $t->timestamp('generated_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['template_id', 'idempotency_key']);
-            $t->index(['status', 'occurrence_on']);
+            $t->unique(['template_id', 'idempotency_key'], 'uq_009044621418');
+            $t->index(['status', 'occurrence_on'], 'ix_8f93f1f22dce');
         });
         Schema::create('accounting_recurring_transaction_exceptions', function (Blueprint $t): void {
             $t->id();
             $t->foreignId('template_id')->constrained('accounting_recurring_transaction_templates')->cascadeOnDelete();
-            $t->foreignId('occurrence_id')->nullable()->constrained('accounting_recurring_transaction_occurrences')->nullOnDelete();
+            $t->foreignId('occurrence_id')->nullable()->constrained('accounting_recurring_transaction_occurrences', 'id', 'art_exc_occ_fk')->nullOnDelete();
             $t->string('kind', 40);
             $t->text('message');
             $t->string('status', 24)->default('open');
             $t->timestamp('resolved_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['template_id', 'status']);
+            $t->index(['template_id', 'status'], 'ix_bbd9158cd2d1');
         });
     }
 

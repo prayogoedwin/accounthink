@@ -59,7 +59,7 @@ return new class() extends Migration
             $table->foreignId('open_item_id')->constrained('accounting_ap_open_items')->cascadeOnDelete();
             $table->decimal('amount', 20, 2);
             $table->timestamps();
-            $table->unique(['payment_id', 'open_item_id']);
+            $table->unique(['payment_id', 'open_item_id'], 'uq_7799dcacfb9b');
         });
         Schema::create('accounting_ap_disputes', function (Blueprint $table): void {
             $table->id();

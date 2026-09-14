@@ -1,8 +1,8 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "liberusoftware/accounting-erp-laravel",
+    "name": "accounthink/accounthink",
     "type": "project",
-    "description": "Liberu Accounting application built on the Liberu Laravel foundation.",
+    "description": "Accounthink — accounting ERP based on Liberu Accounting (Laravel / Filament).",
     "keywords": [
         "laravel",
         "accounting",

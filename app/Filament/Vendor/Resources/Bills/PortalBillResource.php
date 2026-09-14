@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Support\AccountingMoney;
 
 /**
  * The vendor's own bills — read-only, scoped to the logged-in vendor.
@@ -65,8 +66,8 @@ class PortalBillResource extends Resource
                 TextColumn::make('bill_number')->searchable()->weight(FontWeight::Bold),
                 TextColumn::make('bill_date')->date()->sortable(),
                 TextColumn::make('due_date')->date()->sortable(),
-                TextColumn::make('total_amount')->money()->sortable(),
-                TextColumn::make('amount_paid')->money()->sortable(),
+                TextColumn::make('total_amount')->money(fn (): string => AccountingMoney::code())->sortable(),
+                TextColumn::make('amount_paid')->money(fn (): string => AccountingMoney::code())->sortable(),
                 TextColumn::make('payment_status')->badge(),
             ])
             ->defaultSort('bill_date', 'desc')

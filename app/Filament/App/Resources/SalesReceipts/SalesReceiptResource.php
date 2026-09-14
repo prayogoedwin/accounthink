@@ -24,6 +24,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class SalesReceiptResource extends Resource
 {
@@ -133,19 +134,19 @@ class SalesReceiptResource extends Resource
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('tax_amount')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('total_amount')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
                     ])
                     ->columns(3),
 
@@ -194,7 +195,7 @@ class SalesReceiptResource extends Resource
 
                 TextColumn::make('total_amount')
                     ->label('Total')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('status')

@@ -15,7 +15,7 @@ return new class() extends Migration
             $table->unsignedBigInteger('project_job_id');
             $table->date('period_start');
             $table->date('period_end');
-            $table->char('currency', 3)->default('GBP');
+            $table->char('currency', 3)->default('IDR');
             foreach (['revenue_amount', 'cost_amount', 'estimate_amount', 'committed_amount', 'actual_amount', 'unbilled_wip_amount', 'billed_amount'] as $field) {
                 $table->decimal($field, 20, 2)->default(0);
             }$table->string('status')->default('draft');
@@ -23,8 +23,8 @@ return new class() extends Migration
             $table->json('source_links')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['project_job_id', 'period_start', 'period_end']);
-            $table->index(['team_id', 'period_start', 'period_end']);
+            $table->unique(['project_job_id', 'period_start', 'period_end'], 'uq_c3e7e3664cc3');
+            $table->index(['team_id', 'period_start', 'period_end'], 'ix_38fa0643aea6');
         });
     }
 

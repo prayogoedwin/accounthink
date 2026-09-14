@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->brandName('Liberu Accounting')
+            ->brandName('Accounthink')
             ->login()
             ->colors(app(ThemeColors::class)->forSite())
             ->navigationGroups([

@@ -22,6 +22,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class DelayedChargeResource extends Resource
 {
@@ -80,7 +81,7 @@ class DelayedChargeResource extends Resource
                         TextInput::make('unit_price')
                             ->numeric()
                             ->required()
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->live()
                             ->afterStateUpdated(function ($state, callable $set, $get): void {
                                 $quantity = $get('quantity') ?? 1;
@@ -91,7 +92,7 @@ class DelayedChargeResource extends Resource
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
                     ])
                     ->columns(2),
 
@@ -142,7 +143,7 @@ class DelayedChargeResource extends Resource
                     ->limit(50),
 
                 TextColumn::make('amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('status')

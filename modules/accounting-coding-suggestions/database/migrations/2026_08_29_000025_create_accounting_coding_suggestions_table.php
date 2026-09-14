@@ -23,7 +23,7 @@ return new class() extends Migration
             $table->json('policy')->nullable();
             $table->json('review')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'source_ref', 'target_type', 'target_ref']);
+            $table->unique(['team_id', 'source_ref', 'target_type', 'target_ref'], 'uq_5875d0d40722');
         });
     }
 

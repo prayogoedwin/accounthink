@@ -21,6 +21,7 @@ use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class PayrollResource extends Resource
 {
@@ -44,17 +45,17 @@ class PayrollResource extends Resource
                 TextInput::make('base_salary')
                     ->required()
                     ->numeric()
-                    ->prefix('$'),
+                    ->prefix(fn (): string => AccountingMoney::symbol()),
                 TextInput::make('overtime_hours')
                     ->numeric()
                     ->default(0),
                 TextInput::make('overtime_rate')
                     ->numeric()
-                    ->prefix('$')
+                    ->prefix(fn (): string => AccountingMoney::symbol())
                     ->default(0),
                 TextInput::make('other_deductions')
                     ->numeric()
-                    ->prefix('$')
+                    ->prefix(fn (): string => AccountingMoney::symbol())
                     ->default(0),
                 DatePicker::make('pay_period_start')
                     ->required(),
@@ -82,10 +83,10 @@ class PayrollResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('base_salary')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('net_salary')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('payment_date')
                     ->date()

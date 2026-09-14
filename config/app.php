@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Liberu Accounting ERP'),
+    'name' => env('APP_NAME', 'Accounthink'),
 
     /*
     |--------------------------------------------------------------------------

@@ -30,7 +30,7 @@ return new class() extends Migration
             $table->json('metadata')->nullable();
             $table->timestamps();
             $table->unique(['legal_entity_id', 'name']);
-            $table->index(['legal_entity_id', 'status', 'account_type']);
+            $table->index(['legal_entity_id', 'status', 'account_type'], 'ix_4a651d1a4db5');
         });
     }
 

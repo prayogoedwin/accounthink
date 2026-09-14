@@ -29,8 +29,8 @@ return new class() extends Migration
             $t->text('failure_message')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'provider', 'settlement_ref']);
-            $t->index(['team_id', 'status', 'period_end']);
+            $t->unique(['team_id', 'provider', 'settlement_ref'], 'uq_42b541ecbb06');
+            $t->index(['team_id', 'status', 'period_end'], 'ix_da06e004eddf');
         });
         Schema::create('accounting_payment_reconciliation_items', function (Blueprint $t): void {
             $t->id();
@@ -50,7 +50,7 @@ return new class() extends Migration
             $t->char('source_hash', 64);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'external_ref']);
+            $t->unique(['run_id', 'external_ref'], 'uq_82d59bf80fb2');
             $t->index(['run_id', 'status', 'type']);
         });
         Schema::create('accounting_payment_reconciliation_matches', function (Blueprint $t): void {
@@ -67,7 +67,7 @@ return new class() extends Migration
             $t->string('idempotency_key', 190)->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['item_id', 'reference_type', 'reference_id']);
+            $t->unique(['item_id', 'reference_type', 'reference_id'], 'uq_43938ee43f22');
             $t->index(['run_id', 'status']);
         });
         Schema::create('accounting_payment_reconciliation_exceptions', function (Blueprint $t): void {
@@ -85,7 +85,7 @@ return new class() extends Migration
             $t->timestamp('resolved_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['run_id', 'status', 'kind']);
+            $t->index(['run_id', 'status', 'kind'], 'ix_6e53d850609d');
         });
         Schema::create('accounting_payment_reconciliation_drifts', function (Blueprint $t): void {
             $t->id();
@@ -110,7 +110,7 @@ return new class() extends Migration
             $t->json('payload');
             $t->char('payload_hash', 64);
             $t->timestamp('created_at');
-            $t->index(['run_id', 'event_type', 'created_at']);
+            $t->index(['run_id', 'event_type', 'created_at'], 'ix_335e02967154');
         });
     }
 

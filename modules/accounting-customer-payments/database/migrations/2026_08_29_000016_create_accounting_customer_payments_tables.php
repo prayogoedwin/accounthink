@@ -33,7 +33,7 @@ return new class() extends Migration
             $table->string('document_ref', 160);
             $table->decimal('amount', 20, 8);
             $table->timestamps();
-            $table->unique(['payment_id', 'document_ref']);
+            $table->unique(['payment_id', 'document_ref'], 'uq_3a57ef10dce3');
         });
     }
 

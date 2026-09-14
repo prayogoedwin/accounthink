@@ -24,8 +24,8 @@ return new class() extends Migration
             $t->date('period_end');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['context_id', 'type', 'jurisdiction', 'period_start']);
-            $t->index(['status', 'jurisdiction', 'period_start']);
+            $t->unique(['context_id', 'type', 'jurisdiction', 'period_start'], 'uq_55cbc6f9181f');
+            $t->index(['status', 'jurisdiction', 'period_start'], 'ix_962253d6615a');
         });
     }
 

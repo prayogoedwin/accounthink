@@ -25,6 +25,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class PurchaseRequestResource extends Resource
 {
@@ -91,7 +92,7 @@ class PurchaseRequestResource extends Resource
                 TextColumn::make('request_date')
                     ->date(),
                 TextColumn::make('total_amount')
-                    ->money(),
+                    ->money(fn (): string => AccountingMoney::code()),
                 TextColumn::make('approval_status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {

@@ -82,7 +82,7 @@ return new class() extends Migration
             $t->timestamp('reconciled_at');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'reconciliation_ref']);
+            $t->unique(['team_id', 'reconciliation_ref'], 'uq_cfc3cc110309');
         });
     }
 

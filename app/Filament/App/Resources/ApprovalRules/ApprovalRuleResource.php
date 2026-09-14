@@ -22,6 +22,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\Permission\Models\Role;
+use App\Support\AccountingMoney;
 
 class ApprovalRuleResource extends Resource
 {
@@ -97,7 +98,7 @@ class ApprovalRuleResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('min_amount')
-                    ->money()
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('deadline_days')
                     ->sortable(),

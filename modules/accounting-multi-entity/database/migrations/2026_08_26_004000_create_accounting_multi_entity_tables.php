@@ -71,7 +71,7 @@ return new class() extends Migration
             $t->boolean('is_active')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['entity_id', 'mapping_type', 'source_ref']);
+            $t->unique(['entity_id', 'mapping_type', 'source_ref'], 'uq_8cab6114df52');
         });
         Schema::create('accounting_multi_entity_switches', function (Blueprint $t): void {
             $t->id();
@@ -81,7 +81,7 @@ return new class() extends Migration
             $t->timestamp('switched_at');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['user_ref', 'session_ref', 'switched_at']);
+            $t->index(['user_ref', 'session_ref', 'switched_at'], 'ix_c084f9d10717');
         });
     }
 

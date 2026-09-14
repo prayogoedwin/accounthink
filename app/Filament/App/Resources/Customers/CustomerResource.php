@@ -23,6 +23,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class CustomerResource extends Resource
 {
@@ -72,11 +73,11 @@ class CustomerResource extends Resource
                     ->searchable()
                     ->label('City'),
                 TextColumn::make('current_balance')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable()
                     ->label('Balance'),
                 TextColumn::make('credit_limit')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable()
                     ->label('Credit Limit'),
                 IconColumn::make('credit_hold')

@@ -21,7 +21,7 @@ return new class() extends Migration
             $table->json('metadata')->nullable();
             $table->timestamp('refreshed_at')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'metric', 'period_start', 'period_end']);
+            $table->unique(['team_id', 'metric', 'period_start', 'period_end'], 'uq_965fd029bcc8');
         });
     }
 

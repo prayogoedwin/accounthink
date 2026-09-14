@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name', 'Liberu Accounting ERP') }} — a foundation you keep</title>
+    <title>{{ config('app.name', 'Accounthink') }} — a foundation you keep</title>
     <meta name="description" content="A Laravel + Filament + Livewire accounting ERP that ships a credible, working app: auth, teams, roles, search, themes and multi-language on a polished default.">
 
     @fonts
@@ -266,12 +266,12 @@
 
 <header class="nav" id="nav">
     <div class="wrap nav__inner">
-        <a href="/" class="brand" aria-label="{{ config('app.name', 'Liberu Accounting ERP') }} home">
+        <a href="/" class="brand" aria-label="{{ config('app.name', 'Accounthink') }} home">
             <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
                 <rect width="32" height="32" rx="8" fill="#0b6b74"/>
                 <path d="M6 20.5c2.2 0 2.2-9 4.4-9s2.2 9 4.4 9 2.2-13 4.4-13 2.2 13 4.4 13" stroke="#45b4bf" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>{{ config('app.name', 'Liberu Accounting ERP') }}</span>
+            <span>{{ config('app.name', 'Accounthink') }}</span>
         </a>
         <nav class="nav__links" aria-label="Primary">
             <a href="#features" class="muted">Features</a>
@@ -430,7 +430,7 @@
 
 <footer>
     <div class="wrap foot">
-        <span>© {{ date('Y') }} {{ config('app.name', 'Liberu Accounting ERP') }} · MIT licensed</span>
+        <span>© {{ date('Y') }} {{ config('app.name', 'Accounthink') }} · MIT licensed</span>
         <nav class="foot__links" aria-label="Footer">
             <a href="https://github.com/liberusoftware/accounting-erp-laravel" rel="noopener">GitHub</a>
             <a href="#features">Features</a>

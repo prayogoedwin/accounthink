@@ -62,12 +62,8 @@ class ThemeServiceProvider extends ServiceProvider
         $themeManager = $this->app->make(ThemeManager::class);
 
         $user = auth()->user();
-        $preference = $user instanceof Authenticatable
-            ? ($user->getAttributes()['theme_preference'] ?? null)
-            : null;
-
-        if (is_string($preference) && $preference !== '' && $themeManager->themeExists($preference)) {
-            return $preference;
+        if ($user instanceof Authenticatable && is_string($user->theme_preference) && $user->theme_preference !== '' && $themeManager->themeExists($user->theme_preference)) {
+            return $user->theme_preference;
         }
 
         $session = session('theme_preference');

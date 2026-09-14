@@ -25,7 +25,7 @@ return new class() extends Migration
             $table->json('statement')->nullable();
             $table->json('correction')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'subcontractor_ref', 'tax_period']);
+            $table->unique(['team_id', 'subcontractor_ref', 'tax_period'], 'uq_494f58308ef7');
         });
     }
 

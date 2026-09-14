@@ -1,6 +1,8 @@
-# Liberu Accounting ERP
+# Accounthink
 
-> Production-ready accounting and ERP application for ledgers, banking, tax, expenses, approvals, and reporting.
+> Accounting ERP for ledgers, banking, tax, expenses, approvals, and reporting.
+
+Fork of [Liberu Accounting](https://github.com/liberu-accounting/accounting-laravel) (MIT), rebranded as **Accounthink**.
 
 [Software](https://liberusoftware.com) · [Hosting](https://liberuhosting.com) · [Services](https://liberuservices.com) · [Liberu Group](https://liberugroup.com)
 
@@ -8,7 +10,7 @@
 
 [![Install](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/install.yml/badge.svg?branch=main)](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/install.yml) [![Tests](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/tests.yml) [![Docker](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/docker.yml/badge.svg?branch=main)](https://github.com/liberusoftware/accounting-erp-laravel/actions/workflows/docker.yml) [![Codecov](https://codecov.io/gh/liberusoftware/accounting-erp-laravel/branch/main/graph/badge.svg)](https://codecov.io/gh/liberusoftware/accounting-erp-laravel) [![Latest release](https://img.shields.io/github/v/release/liberusoftware/accounting-erp-laravel?sort=semver)](https://github.com/liberusoftware/accounting-erp-laravel/releases/latest) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
-Liberu Accounting ERP is the deployable accounting application built on the Liberu Laravel foundation. It combines ledger, invoicing, procurement, banking, tax, payroll, inventory, reconciliation, approvals, and reporting capabilities with Filament and Livewire surfaces.
+Accounthink is the deployable accounting application built on the Liberu Laravel foundation. It combines ledger, invoicing, procurement, banking, tax, payroll, inventory, reconciliation, approvals, and reporting capabilities with Filament and Livewire surfaces.
 
 ## Key features
 

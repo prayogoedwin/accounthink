@@ -30,7 +30,7 @@ return new class() extends Migration
             $t->json('errors')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['template_id', 'source_hash']);
+            $t->unique(['template_id', 'source_hash'], 'uq_67fcca6a455a');
             $t->index(['status', 'mode']);
         });
     }

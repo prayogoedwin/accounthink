@@ -11,11 +11,11 @@ class PanelBrandingTest extends TestCase
 {
     public function test_admin_panel_is_branded(): void
     {
-        $this->assertSame('Liberu Accounting', Filament::getPanel('admin')->getBrandName());
+        $this->assertSame('Accounthink', Filament::getPanel('admin')->getBrandName());
     }
 
     public function test_app_panel_is_branded(): void
     {
-        $this->assertSame('Liberu Accounting', Filament::getPanel('app')->getBrandName());
+        $this->assertSame('Accounthink', Filament::getPanel('app')->getBrandName());
     }
 }

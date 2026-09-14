@@ -39,7 +39,7 @@ return new class() extends Migration
             $t->foreignId('batch_id')->nullable()->constrained('accounting_reimbursement_batches')->nullOnDelete();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['team_id', 'payee_ref', 'status']);
+            $t->index(['team_id', 'payee_ref', 'status'], 'ix_33f87541615f');
             $t->index(['source_type', 'source_id']);
         });
         Schema::create('accounting_reimbursement_remittances', function (Blueprint $t): void {
@@ -66,7 +66,7 @@ return new class() extends Migration
             $t->text('notes')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['batch_id', 'external_ref']);
+            $t->unique(['batch_id', 'external_ref'], 'uq_ce8974fa2773');
         });
     }
 

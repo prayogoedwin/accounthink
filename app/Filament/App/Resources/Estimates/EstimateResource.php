@@ -24,6 +24,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class EstimateResource extends Resource
 {
@@ -150,7 +151,7 @@ class EstimateResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('total_amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('status')

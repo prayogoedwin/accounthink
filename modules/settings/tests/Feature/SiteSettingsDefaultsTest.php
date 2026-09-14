@@ -5,7 +5,7 @@ use Liberu\Foundation\Settings\Settings\SiteSettings;
 it('seeds default site settings via the settings migration', function () {
     $settings = app(SiteSettings::class);
 
-    expect($settings->site_currency)->toBe('$')
+    expect($settings->site_currency)->toBe('Rp')
         ->and($settings->site_default_language)->toBe('en')
         ->and($settings->github_url)->toContain('github.com/liberusoftware');
 });

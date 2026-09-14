@@ -28,8 +28,8 @@ return new class() extends Migration
             $t->text('failure_message')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'report_key', 'source_hash']);
-            $t->index(['team_id', 'category', 'status', 'period_end']);
+            $t->unique(['team_id', 'report_key', 'source_hash'], 'uq_13dd8716bba6');
+            $t->index(['team_id', 'category', 'status', 'period_end'], 'ix_d8cd1b8abeb3');
         });
         Schema::create('accounting_operational_report_rows', function (Blueprint $t): void {
             $t->id();
@@ -61,7 +61,7 @@ return new class() extends Migration
             $t->timestamp('resolved_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['run_id', 'status', 'severity']);
+            $t->index(['run_id', 'status', 'severity'], 'ix_86d595baedab');
         });
         Schema::create('accounting_operational_report_audits', function (Blueprint $t): void {
             $t->id();
@@ -71,7 +71,7 @@ return new class() extends Migration
             $t->json('payload');
             $t->char('payload_hash', 64);
             $t->timestamp('created_at');
-            $t->index(['run_id', 'event_type', 'created_at']);
+            $t->index(['run_id', 'event_type', 'created_at'], 'ix_830aa5251340');
         });
     }
 

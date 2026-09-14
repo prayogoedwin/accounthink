@@ -26,6 +26,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class InventoryItemResource extends Resource
 {
@@ -109,7 +110,7 @@ class InventoryItemResource extends Resource
                     ->label('Qty')
                     ->sortable(),
                 TextColumn::make('unit_price')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('valuation_method')
                     ->badge(),

@@ -12,12 +12,12 @@ return new class() extends Migration
     {
         Schema::create('accounting_three_way_matches', function (Blueprint $table): void {
             $table->id();
-            $table->string('purchase_order_type', 160);
-            $table->string('purchase_order_id', 160);
-            $table->string('receipt_type', 160);
-            $table->string('receipt_id', 160);
-            $table->string('bill_type', 160);
-            $table->string('bill_id', 160);
+            $table->string('purchase_order_type', 120);
+            $table->string('purchase_order_id', 64);
+            $table->string('receipt_type', 120);
+            $table->string('receipt_id', 64);
+            $table->string('bill_type', 120);
+            $table->string('bill_id', 64);
             $table->char('currency', 3);
             $table->decimal('ordered_quantity', 20, 4);
             $table->decimal('received_quantity', 20, 4);
@@ -35,7 +35,7 @@ return new class() extends Migration
             $table->text('rejected_reason')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['purchase_order_type', 'purchase_order_id', 'receipt_type', 'receipt_id', 'bill_type', 'bill_id']);
+            $table->unique(['purchase_order_type', 'purchase_order_id', 'receipt_type', 'receipt_id', 'bill_type', 'bill_id'], 'uq_d1ffd81e13af');
             $table->index(['status', 'created_at']);
         });
 
@@ -53,7 +53,7 @@ return new class() extends Migration
             $table->timestamp('resolved_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->index(['match_id', 'status', 'severity']);
+            $table->index(['match_id', 'status', 'severity'], 'ix_8010aa186b14');
         });
 
         Schema::create('accounting_three_way_match_evidence', function (Blueprint $table): void {
@@ -66,7 +66,7 @@ return new class() extends Migration
             $table->unsignedBigInteger('captured_by')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['match_id', 'source_type', 'source_id', 'snapshot_hash']);
+            $table->unique(['match_id', 'source_type', 'source_id', 'snapshot_hash'], 'uq_12a62d7978e8');
         });
     }
 

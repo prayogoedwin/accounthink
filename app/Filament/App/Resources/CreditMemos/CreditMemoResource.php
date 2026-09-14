@@ -21,6 +21,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class CreditMemoResource extends Resource
 {
@@ -156,15 +157,15 @@ class CreditMemoResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('total_amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('amount_applied')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('amount_remaining')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->getStateUsing(fn ($record) => $record->amount_remaining),
 
                 TextColumn::make('status')

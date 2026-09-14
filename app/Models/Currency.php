@@ -20,6 +20,7 @@ class Currency extends Model
         'name',
         'symbol',
         'is_default',
+        'team_id',
     ];
 
     #[\Override]

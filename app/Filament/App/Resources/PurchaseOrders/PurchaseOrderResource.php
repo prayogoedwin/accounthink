@@ -23,6 +23,7 @@ use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class PurchaseOrderResource extends Resource
 {
@@ -86,7 +87,7 @@ class PurchaseOrderResource extends Resource
                 TextColumn::make('order_date')
                     ->date(),
                 TextColumn::make('total_amount')
-                    ->money(),
+                    ->money(fn (): string => AccountingMoney::code()),
                 BadgeColumn::make('status')
                     ->colors([
                         'warning' => 'draft',

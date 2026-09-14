@@ -20,6 +20,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class ExpenseResource extends Resource
 {
@@ -40,7 +41,7 @@ class ExpenseResource extends Resource
                 TextInput::make('amount')
                     ->required()
                     ->numeric()
-                    ->prefix('$')
+                    ->prefix(fn (): string => AccountingMoney::symbol())
                     ->minValue(0.01)
                     ->step(0.01),
                 TextInput::make('description')
@@ -90,7 +91,7 @@ class ExpenseResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('description')
                     ->searchable(),

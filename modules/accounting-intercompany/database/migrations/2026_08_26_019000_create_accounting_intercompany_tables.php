@@ -19,7 +19,7 @@ return new class() extends Migration
             $t->boolean('active')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'entity_ref', 'counterparty_ref']);
+            $t->unique(['team_id', 'entity_ref', 'counterparty_ref'], 'uq_bdceaadc2e05');
         });
         Schema::create('accounting_intercompany_trading_rules', function (Blueprint $t) {
             $t->id();
@@ -48,7 +48,7 @@ return new class() extends Migration
             $t->timestamp('transaction_date');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'transaction_ref']);
+            $t->unique(['team_id', 'transaction_ref'], 'uq_eabe8195d59d');
         });
         Schema::create('accounting_intercompany_confirmations', function (Blueprint $t) {
             $t->id();
@@ -87,7 +87,7 @@ return new class() extends Migration
         });
         Schema::create('accounting_intercompany_transfer_pricing_evidence', function (Blueprint $t) {
             $t->id();
-            $t->foreignId('transaction_id')->constrained('accounting_intercompany_transactions')->cascadeOnDelete();
+            $t->foreignId('transaction_id')->constrained('accounting_intercompany_transactions', 'id', 'aic_tpe_txn_fk')->cascadeOnDelete();
             $t->string('evidence_ref');
             $t->string('kind');
             $t->string('file_ref')->nullable();
@@ -114,7 +114,7 @@ return new class() extends Migration
             $t->timestamp('reconciled_at');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'reconciliation_ref']);
+            $t->unique(['team_id', 'reconciliation_ref'], 'uq_0e1e5675b0a8');
         });
     }
 

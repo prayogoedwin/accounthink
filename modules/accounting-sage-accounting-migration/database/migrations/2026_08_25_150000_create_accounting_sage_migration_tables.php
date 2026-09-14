@@ -20,7 +20,7 @@ return new class() extends Migration
             $t->string('status', 24)->default('active');
             $t->timestamp('last_synced_at')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'provider', 'external_business_id']);
+            $t->unique(['team_id', 'provider', 'external_business_id'], 'uq_7e0dfaa7c514');
         });
         Schema::create('accounting_sage_migration_runs', function (Blueprint $t): void {
             $t->id();
@@ -46,7 +46,7 @@ return new class() extends Migration
             $t->text('error_message')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'entity_type', 'source_id']);
+            $t->unique(['run_id', 'entity_type', 'source_id'], 'uq_b33a04e0d0e6');
             $t->index(['entity_type', 'source_id']);
         });
     }

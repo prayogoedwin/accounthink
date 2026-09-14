@@ -38,7 +38,7 @@ class InvoiceScanner
     {
         preg_match('/total.?\s*[:$]?\s*([\d,.]+)/i', $text, $matches);
         if (isset($matches[1])) {
-            return (float) str_replace(['$', ','], '', $matches[1]);
+            return (float) str_replace(['Rp', 'rp', '$', ','], '', $matches[1]);
         }
 
         return null;

@@ -35,7 +35,7 @@ return new class() extends Migration
             $t->boolean('active')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['source_id', 'mapping_ref', 'version']);
+            $t->unique(['source_id', 'mapping_ref', 'version'], 'uq_7a4c914612ad');
         });
         Schema::create('accounting_migration_batches', function (Blueprint $t): void {
             $t->id();

@@ -24,6 +24,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class InvoiceResource extends Resource
 {
@@ -124,7 +125,7 @@ class InvoiceResource extends Resource
                     ->date()
                     ->sortable(),
                 TextColumn::make('total_amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('payment_status')
                     ->badge()

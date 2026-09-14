@@ -62,7 +62,7 @@ return new class() extends Migration
             $t->string('status', 24)->default('reserved');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['sales_order_id', 'fulfillment_type', 'fulfillment_id']);
+            $t->unique(['sales_order_id', 'fulfillment_type', 'fulfillment_id'], 'uq_aa9dbba30f7c');
         });
     }
 

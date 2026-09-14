@@ -41,7 +41,7 @@ return new class() extends Migration
             $table->string('reconciliation_ref', 160)->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'transaction_ref']);
+            $table->unique(['team_id', 'transaction_ref'], 'uq_7860cbcf6d35');
         });
     }
 

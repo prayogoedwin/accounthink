@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Support\AccountingMoney;
 
 /**
  * The vendor's own credit notes — read-only, scoped to the logged-in vendor.
@@ -62,8 +63,8 @@ class PortalVendorCreditResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('credit_date')->date()->sortable(),
-                TextColumn::make('total_amount')->money()->sortable(),
-                TextColumn::make('amount_remaining')->money()->sortable(),
+                TextColumn::make('total_amount')->money(fn (): string => AccountingMoney::code())->sortable(),
+                TextColumn::make('amount_remaining')->money(fn (): string => AccountingMoney::code())->sortable(),
                 TextColumn::make('status')->badge(),
             ])
             ->defaultSort('credit_date', 'desc')

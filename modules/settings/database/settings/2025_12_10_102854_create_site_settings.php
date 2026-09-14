@@ -11,7 +11,7 @@ return new class() extends SettingsMigration
         $this->migrator->add('site.site_phone', '');
         $this->migrator->add('site.site_address', '');
         $this->migrator->add('site.site_country', '');
-        $this->migrator->add('site.site_currency', '$');
+        $this->migrator->add('site.site_currency', 'Rp');
         $this->migrator->add('site.site_default_language', 'en');
         $this->migrator->add('site.facebook_url', null);
         $this->migrator->add('site.twitter_url', null);

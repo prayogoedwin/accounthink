@@ -180,6 +180,15 @@ class BankStatementImportService
 
     private function parseAmount(string $amount): float
     {
-        return (float) str_replace(['$', ','], '', $amount);
+        $normalized = preg_replace('/(?:Rp|IDR|USD|GBP|EUR|\$)/i', '', $amount) ?? $amount;
+        $normalized = trim($normalized);
+        if (preg_match('/^\d{1,3}(\.\d{3})+(,\d+)?$/', $normalized)) {
+            $normalized = str_replace('.', '', $normalized);
+            $normalized = str_replace(',', '.', $normalized);
+        } else {
+            $normalized = str_replace(',', '', $normalized);
+        }
+
+        return (float) $normalized;
     }
 }

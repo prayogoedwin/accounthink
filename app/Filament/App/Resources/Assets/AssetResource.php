@@ -22,6 +22,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class AssetResource extends Resource
 {
@@ -99,14 +100,14 @@ class AssetResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('asset_cost')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('useful_life_years')
                     ->sortable(),
                 TextColumn::make('depreciation_method')
                     ->sortable(),
                 TextColumn::make('salvage_value')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
             ])
             ->filters([

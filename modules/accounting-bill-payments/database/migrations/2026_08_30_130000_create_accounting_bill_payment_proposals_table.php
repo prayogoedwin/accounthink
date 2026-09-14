@@ -41,7 +41,7 @@ return new class() extends Migration
             $table->timestamp('remittance_sent_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'supplier_id', 'bill_reference']);
+            $table->unique(['team_id', 'supplier_id', 'bill_reference'], 'uq_ab688821f06d');
             $table->unique(['team_id', 'idempotency_key']);
         });
     }

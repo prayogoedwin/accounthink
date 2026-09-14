@@ -15,6 +15,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use App\Support\AccountingMoney;
 
 /**
  * The customer's own invoices — read-only. Every query is scoped to the logged-in
@@ -68,7 +69,7 @@ class PortalInvoiceResource extends Resource
                 TextColumn::make('invoice_number')->searchable()->weight(FontWeight::Bold),
                 TextColumn::make('invoice_date')->date()->sortable(),
                 TextColumn::make('due_date')->date()->sortable(),
-                TextColumn::make('total_amount')->money()->sortable(),
+                TextColumn::make('total_amount')->money(fn (): string => AccountingMoney::code())->sortable(),
                 TextColumn::make('payment_status')->badge(),
             ])
             ->defaultSort('invoice_date', 'desc')

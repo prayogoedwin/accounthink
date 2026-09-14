@@ -17,6 +17,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class TaxFormResource extends Resource
 {
@@ -74,7 +75,7 @@ class TaxFormResource extends Resource
                 TextColumn::make('customer.customer_name'),
                 TextColumn::make('tax_year'),
                 TextColumn::make('total_payments')
-                    ->money('USD'),
+                    ->money(fn (): string => AccountingMoney::code()),
                 TextColumn::make('status'),
             ])
             ->filters([

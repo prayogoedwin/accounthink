@@ -60,8 +60,8 @@ class AccountSetupWizard extends Page
 
         $this->form->fill([
             'business_name' => $team->name,
-            'country' => $setup['country'] ?? 'GB',
-            'currency' => $setup['currency'] ?? 'GBP',
+            'country' => $setup['country'] ?? 'ID',
+            'currency' => $setup['currency'] ?? 'IDR',
             'fiscal_year_start' => $setup['fiscal_year_start'] ?? '01-01',
             'timezone' => $setup['timezone'] ?? config('app.timezone', 'UTC'),
             'vonage_from' => $team->vonage_from,
@@ -80,8 +80,8 @@ class AccountSetupWizard extends Page
                         ->description('Tell us how to configure your books.')
                         ->schema([
                             TextInput::make('business_name')->label('Business or team name')->required()->maxLength(255),
-                            Select::make('country')->options(['GB' => 'United Kingdom', 'US' => 'United States', 'CA' => 'Canada', 'AU' => 'Australia', 'IE' => 'Ireland'])->required()->native(false),
-                            Select::make('currency')->options(['GBP' => 'GBP — Pound sterling', 'USD' => 'USD — US dollar', 'EUR' => 'EUR — Euro', 'CAD' => 'CAD — Canadian dollar', 'AUD' => 'AUD — Australian dollar'])->required()->native(false),
+                            Select::make('country')->options(['ID' => 'Indonesia', 'GB' => 'United Kingdom', 'US' => 'United States', 'SG' => 'Singapore', 'MY' => 'Malaysia', 'AU' => 'Australia'])->required()->native(false),
+                            Select::make('currency')->options(['IDR' => 'IDR — Rupiah', 'USD' => 'USD — US dollar', 'SGD' => 'SGD — Singapore dollar', 'MYR' => 'MYR — Ringgit', 'EUR' => 'EUR — Euro', 'GBP' => 'GBP — Pound sterling'])->required()->native(false),
                             Select::make('fiscal_year_start')->label('Fiscal year starts')->options(collect(range(1, 12))->mapWithKeys(fn (int $month): array => [sprintf('%02d-01', $month) => Carbon::create()->month($month)->format('F')])->all())->required()->native(false),
                             TextInput::make('timezone')->label('Timezone')->required()->default(config('app.timezone', 'UTC')),
                         ])->columns(2),

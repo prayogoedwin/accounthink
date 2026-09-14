@@ -26,7 +26,7 @@ return new class() extends Migration
             $table->timestamp('approved_at')->nullable();
             $table->timestamp('rejected_at')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'name', 'period_start', 'period_end', 'version']);
+            $table->unique(['team_id', 'name', 'period_start', 'period_end', 'version'], 'uq_3b2e53ffa649');
         });
         Schema::create('accounting_budget_lines', function (Blueprint $table): void {
             $table->id();

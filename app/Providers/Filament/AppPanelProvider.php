@@ -31,7 +31,7 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->id('app')
             ->path('app')
-            ->brandName('Liberu Accounting')
+            ->brandName('Accounthink')
             ->colors(app(ThemeColors::class)->forSite())
             ->navigationGroups([
                 'Overview',

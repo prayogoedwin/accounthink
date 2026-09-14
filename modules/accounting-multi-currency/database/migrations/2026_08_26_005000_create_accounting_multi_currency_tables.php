@@ -32,8 +32,8 @@ return new class() extends Migration
             $t->boolean('is_historical')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'from_currency', 'to_currency', 'rate_date', 'rate_type']);
-            $t->index(['from_currency', 'to_currency', 'rate_date']);
+            $t->unique(['team_id', 'from_currency', 'to_currency', 'rate_date', 'rate_type'], 'uq_2f25455abfe8');
+            $t->index(['from_currency', 'to_currency', 'rate_date'], 'ix_c17647c2b404');
         });
         Schema::create('accounting_multi_currency_revaluations', function (Blueprint $t): void {
             $t->id();
@@ -56,7 +56,7 @@ return new class() extends Migration
             $t->json('metadata')->nullable();
             $t->timestamps();
             $t->unique(['team_id', 'run_ref']);
-            $t->index(['team_id', 'status', 'as_of_date']);
+            $t->index(['team_id', 'status', 'as_of_date'], 'ix_6f800e0f095d');
         });
         Schema::create('accounting_multi_currency_positions', function (Blueprint $t): void {
             $t->id();
@@ -73,7 +73,7 @@ return new class() extends Migration
             $t->string('gain_status', 24);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'reference_type', 'reference_id']);
+            $t->unique(['run_id', 'reference_type', 'reference_id'], 'uq_0361cd7e56fb');
             $t->index(['run_id', 'gain_status']);
         });
         Schema::create('accounting_multi_currency_reconciliations', function (Blueprint $t): void {
@@ -89,7 +89,7 @@ return new class() extends Migration
             $t->text('notes')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'reference_type', 'reference_id']);
+            $t->unique(['run_id', 'reference_type', 'reference_id'], 'uq_f9a60879ebaf');
         });
     }
 

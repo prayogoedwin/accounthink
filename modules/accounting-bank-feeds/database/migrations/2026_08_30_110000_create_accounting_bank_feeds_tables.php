@@ -38,7 +38,7 @@ return new class() extends Migration
             $table->timestamp('last_error_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['provider', 'external_reference']);
+            $table->unique(['provider', 'external_reference'], 'uq_b73e0577ee28');
         });
         Schema::create('accounting_bank_feed_account_mappings', function (Blueprint $table): void {
             $table->id();
@@ -50,7 +50,7 @@ return new class() extends Migration
             $table->string('currency', 3);
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['connection_id', 'external_account_id']);
+            $table->unique(['connection_id', 'external_account_id'], 'uq_f59de6dff77f');
         });
         Schema::create('accounting_bank_feed_transactions', function (Blueprint $table): void {
             $table->id();
@@ -68,7 +68,7 @@ return new class() extends Migration
             $table->text('raw_data')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['connection_id', 'external_id']);
+            $table->unique(['connection_id', 'external_id'], 'uq_5924a1986d61');
         });
     }
 

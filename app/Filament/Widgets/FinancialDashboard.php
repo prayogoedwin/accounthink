@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Widgets;
 
 use App\Services\GeneralLedgerService;
+use App\Support\AccountingMoney;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 
@@ -23,17 +24,17 @@ class FinancialDashboard extends BaseWidget
         $metrics = app(GeneralLedgerService::class)->getKeyMetrics();
 
         return [
-            Stat::make('Total Revenue', '$'.number_format($metrics['revenue'], 2))
+            Stat::make('Total Revenue', AccountingMoney::format($metrics['revenue']))
                 ->description('Total revenue this month')
                 ->chart($metrics['revenueChart'])
                 ->color('success'),
 
-            Stat::make('Total Expenses', '$'.number_format($metrics['expenses'], 2))
+            Stat::make('Total Expenses', AccountingMoney::format($metrics['expenses']))
                 ->description('Total expenses this month')
                 ->chart($metrics['expensesChart'])
                 ->color('danger'),
 
-            Stat::make('Net Income', '$'.number_format($metrics['netIncome'], 2))
+            Stat::make('Net Income', AccountingMoney::format($metrics['netIncome']))
                 ->description('Net income this month')
                 ->chart($metrics['netIncomeChart'])
                 ->color($metrics['netIncome'] >= 0 ? 'success' : 'danger'),

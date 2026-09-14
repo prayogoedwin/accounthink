@@ -34,7 +34,7 @@ return new class() extends Migration
             $t->string('status', 24)->default('active');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['reference_type', 'reference_id']);
+            $t->unique(['reference_type', 'reference_id'], 'uq_30dec94ad2a7');
         });
         Schema::create('accounting_revenue_schedules', function (Blueprint $t): void {
             $t->id();
@@ -62,8 +62,8 @@ return new class() extends Migration
             $t->string('ledger_reference', 190)->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['schedule_id', 'period_number']);
-            $t->index(['status', 'recognition_date']);
+            $t->unique(['schedule_id', 'period_number'], 'uq_776e94a9a092');
+            $t->index(['status', 'recognition_date'], 'ix_3275738bf6e2');
         });
         Schema::create('accounting_revenue_modifications', function (Blueprint $t): void {
             $t->id();
@@ -87,7 +87,7 @@ return new class() extends Migration
             $t->timestamp('started_at')->nullable();
             $t->timestamp('finished_at')->nullable();
             $t->timestamps();
-            $t->index(['team_id', 'as_of_date', 'status']);
+            $t->index(['team_id', 'as_of_date', 'status'], 'ix_2100ea3f6d57');
         });
         Schema::create('accounting_revenue_reconciliations', function (Blueprint $t): void {
             $t->id();
@@ -101,7 +101,7 @@ return new class() extends Migration
             $t->text('notes')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'reference_type', 'reference_id']);
+            $t->unique(['run_id', 'reference_type', 'reference_id'], 'uq_aa3c56688af2');
         });
     }
 

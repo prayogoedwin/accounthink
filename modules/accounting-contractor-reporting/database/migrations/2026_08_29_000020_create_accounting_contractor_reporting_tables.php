@@ -24,7 +24,7 @@ return new class() extends Migration
             $table->json('correction')->nullable();
             $table->json('evidence')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'payee_ref', 'tax_year', 'form_type']);
+            $table->unique(['team_id', 'payee_ref', 'tax_year', 'form_type'], 'uq_82e6d1e4cd40');
         });
     }
 

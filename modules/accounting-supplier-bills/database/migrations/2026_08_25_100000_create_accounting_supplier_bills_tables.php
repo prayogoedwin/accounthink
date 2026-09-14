@@ -22,7 +22,7 @@ return new class() extends Migration
             $table->decimal('tax_total', 20, 2)->default(0);
             $table->decimal('total', 20, 2)->default(0);
             $table->decimal('amount_paid', 20, 2)->default(0);
-            $table->char('currency', 3)->default('USD');
+            $table->char('currency', 3)->default('IDR');
             $table->string('capture_source', 64)->nullable();
             $table->string('purchase_order_reference', 128)->nullable();
             $table->string('reference_number', 128)->nullable();
@@ -94,7 +94,7 @@ return new class() extends Migration
             $table->string('status', 24)->default('matched');
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['bill_id', 'match_type', 'matched_type', 'matched_id']);
+            $table->unique(['bill_id', 'match_type', 'matched_type', 'matched_id'], 'uq_ea03cd5dac78');
         });
     }
 

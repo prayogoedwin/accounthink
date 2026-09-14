@@ -42,7 +42,7 @@ return new class() extends Migration
             $table->string('submission_ref', 160)->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'period_start', 'period_end', 'scheme']);
+            $table->unique(['team_id', 'period_start', 'period_end', 'scheme'], 'uq_8dfff563b1c4');
         });
         Schema::create('accounting_vat_adjustments', function (Blueprint $table): void {
             $table->id();

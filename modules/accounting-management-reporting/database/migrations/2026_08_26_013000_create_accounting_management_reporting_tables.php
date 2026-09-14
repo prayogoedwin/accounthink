@@ -26,8 +26,8 @@ return new class() extends Migration
             $t->timestamp('archived_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'report_ref', 'version']);
-            $t->index(['team_id', 'status', 'period_end']);
+            $t->unique(['team_id', 'report_ref', 'version'], 'uq_dafb59b2d7fd');
+            $t->index(['team_id', 'status', 'period_end'], 'ix_99ec0aac24d0');
         });
         Schema::create('accounting_management_report_narratives', function (Blueprint $t): void {
             $t->id();
@@ -39,7 +39,7 @@ return new class() extends Migration
             $t->unsignedInteger('version')->default(1);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['report_pack_id', 'section_ref', 'version']);
+            $t->unique(['report_pack_id', 'section_ref', 'version'], 'uq_9b797c960ade');
         });
         Schema::create('accounting_management_report_charts', function (Blueprint $t): void {
             $t->id();
@@ -52,7 +52,7 @@ return new class() extends Migration
             $t->json('options')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['report_pack_id', 'chart_ref']);
+            $t->unique(['report_pack_id', 'chart_ref'], 'uq_f41fd67315bc');
         });
         Schema::create('accounting_management_report_schedules', function (Blueprint $t): void {
             $t->id();
@@ -77,7 +77,7 @@ return new class() extends Migration
             $t->timestamp('reviewed_at');
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['report_pack_id', 'decision']);
+            $t->index(['report_pack_id', 'decision'], 'ix_fdad9af71480');
         });
         Schema::create('accounting_management_report_deliveries', function (Blueprint $t): void {
             $t->id();
@@ -91,7 +91,7 @@ return new class() extends Migration
             $t->text('failure_message')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['report_pack_id', 'format']);
+            $t->unique(['report_pack_id', 'format'], 'uq_25c5baebea34');
         });
     }
 

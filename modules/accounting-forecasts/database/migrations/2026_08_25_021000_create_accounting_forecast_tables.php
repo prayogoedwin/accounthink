@@ -38,7 +38,7 @@ return new class() extends Migration
             $table->decimal('variance_value', 18, 2)->default(0);
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['forecast_id', 'period_ref', 'account_ref', 'dimension_ref']);
+            $table->unique(['forecast_id', 'period_ref', 'account_ref', 'dimension_ref'], 'uq_32fb8e9ca35e');
         });
         Schema::create('accounting_forecast_periods', function (Blueprint $table): void {
             $table->id();

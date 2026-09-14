@@ -28,7 +28,7 @@ return new class() extends Migration
             $t->json('metadata')->nullable();
             $t->timestamps();
             $t->unique(['team_id', 'suggestion_ref']);
-            $t->unique(['team_id', 'source_type', 'source_id', 'target_type', 'target_id', 'match_type']);
+            $t->unique(['team_id', 'source_type', 'source_id', 'target_type', 'target_id', 'match_type'], 'uq_71f98cf76ba5');
             $t->index(['team_id', 'status', 'confidence']);
         });
         Schema::create('accounting_matching_evidence', function (Blueprint $t): void {

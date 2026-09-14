@@ -27,7 +27,7 @@ return new class() extends Migration
             $t->timestamp('archived_at')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['legal_entity_id', 'document_ref']);
+            $t->unique(['legal_entity_id', 'document_ref'], 'uq_73c07494b2b4');
         });
         Schema::create('accounting_e_invoice_events', function (Blueprint $t): void {
             $t->id();

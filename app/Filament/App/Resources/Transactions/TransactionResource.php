@@ -27,6 +27,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class TransactionResource extends Resource
 {
@@ -122,7 +123,7 @@ class TransactionResource extends Resource
                     ->limit(30),
                 TextColumn::make('amount')
                     ->label('Amount')
-                    ->money('usd')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
                 TextColumn::make('debitAccount.name')
                     ->label('Debit Account')

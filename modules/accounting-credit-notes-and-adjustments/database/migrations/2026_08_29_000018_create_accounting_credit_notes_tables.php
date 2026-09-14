@@ -36,7 +36,7 @@ return new class() extends Migration
             $table->string('invoice_ref', 160);
             $table->decimal('amount', 20, 8);
             $table->timestamps();
-            $table->unique(['credit_note_id', 'invoice_ref']);
+            $table->unique(['credit_note_id', 'invoice_ref'], 'uq_b6df132f2896');
         });
     }
 

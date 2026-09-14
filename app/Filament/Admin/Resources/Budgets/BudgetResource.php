@@ -22,6 +22,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class BudgetResource extends Resource
 {
@@ -67,11 +68,11 @@ class BudgetResource extends Resource
                 TextColumn::make('end_date')
                     ->date(),
                 TextColumn::make('planned_amount')
-                    ->money(),
+                    ->money(fn (): string => AccountingMoney::code()),
                 TextColumn::make('forecast_amount')
-                    ->money(),
+                    ->money(fn (): string => AccountingMoney::code()),
                 TextColumn::make('variance')
-                    ->money(),
+                    ->money(fn (): string => AccountingMoney::code()),
                 IconColumn::make('is_approved')
                     ->boolean(),
                 TextColumn::make('description'),

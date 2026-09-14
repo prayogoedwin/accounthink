@@ -36,7 +36,7 @@ return new class() extends Migration
             $t->boolean('active')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['team_id', 'region', 'vehicle_type', 'effective_from']);
+            $t->index(['team_id', 'region', 'vehicle_type', 'effective_from'], 'ix_bcfe9bd5f3dc');
         });
         Schema::create('accounting_mileage_policies', function (Blueprint $t): void {
             $t->id();
@@ -81,7 +81,7 @@ return new class() extends Migration
             $t->json('metadata')->nullable();
             $t->timestamps();
             $t->unique(['team_id', 'trip_ref']);
-            $t->index(['team_id', 'employee_ref', 'trip_date', 'status']);
+            $t->index(['team_id', 'employee_ref', 'trip_date', 'status'], 'ix_f3e9a46e4662');
         });
         Schema::create('accounting_mileage_approvals', function (Blueprint $t): void {
             $t->id();

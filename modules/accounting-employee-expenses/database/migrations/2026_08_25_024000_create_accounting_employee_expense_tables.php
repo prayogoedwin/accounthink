@@ -51,7 +51,7 @@ return new class() extends Migration
             $t->boolean('requires_receipt')->default(false);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'category_ref']);
+            $t->unique(['team_id', 'category_ref'], 'uq_dd1493c8acee');
         });
         Schema::create('accounting_employee_expense_history', function (Blueprint $t): void {
             $t->id();

@@ -95,7 +95,7 @@ return new class() extends Migration
             $table->string('status', 16)->default('active');
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['party_id', 'credential_reference']);
+            $table->unique(['party_id', 'credential_reference'], 'uq_7d69395b35c5');
         });
     }
 

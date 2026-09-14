@@ -37,7 +37,7 @@ return new class() extends Migration
             $table->string('status')->default('draft')->index();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'asset_ref', 'book_ref']);
+            $table->unique(['team_id', 'asset_ref', 'book_ref'], 'uq_25320983ca7a');
         });
 
         Schema::create('accounting_depreciation_runs', function (Blueprint $table): void {
@@ -54,7 +54,7 @@ return new class() extends Migration
             $table->timestamp('posted_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['schedule_id', 'period_start', 'period_end']);
+            $table->unique(['schedule_id', 'period_start', 'period_end'], 'uq_a8a4380e84fe');
         });
     }
 

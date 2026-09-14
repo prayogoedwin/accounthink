@@ -24,6 +24,7 @@ use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class VendorCreditResource extends Resource
 {
@@ -127,31 +128,31 @@ class VendorCreditResource extends Resource
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('tax_amount')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('total_amount')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('amount_applied')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$'),
+                            ->prefix(fn (): string => AccountingMoney::symbol()),
 
                         TextInput::make('amount_remaining')
                             ->numeric()
                             ->disabled()
                             ->dehydrated(false)
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->visible(fn ($record): bool => $record !== null),
                     ])
                     ->columns(3),
@@ -169,7 +170,7 @@ class VendorCreditResource extends Resource
                                 TextInput::make('amount_applied')
                                     ->numeric()
                                     ->required()
-                                    ->prefix('$'),
+                                    ->prefix(fn (): string => AccountingMoney::symbol()),
                                 DatePicker::make('application_date')
                                     ->required()
                                     ->default(now()),
@@ -221,12 +222,12 @@ class VendorCreditResource extends Resource
 
                 TextColumn::make('total_amount')
                     ->label('Total')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('amount_remaining')
                     ->label('Remaining')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('status')
@@ -268,7 +269,7 @@ class VendorCreditResource extends Resource
                         TextInput::make('amount')
                             ->numeric()
                             ->required()
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->maxValue(fn ($record) => $record->amount_remaining),
                     ])
                     ->requiresConfirmation()

@@ -27,7 +27,7 @@ return new class() extends Migration
             $table->unsignedTinyInteger('rounding_scale')->default(2);
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['code', 'jurisdiction_code', 'effective_from']);
+            $table->unique(['code', 'jurisdiction_code', 'effective_from'], 'uq_8506edb01c68');
             $table->index(['status', 'effective_from', 'effective_until']);
         });
         Schema::create('accounting_tax_evidence', function (Blueprint $table): void {
@@ -40,7 +40,7 @@ return new class() extends Migration
             $table->unsignedBigInteger('captured_by')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['tax_rule_id', 'source_type', 'source_id', 'snapshot_hash']);
+            $table->unique(['tax_rule_id', 'source_type', 'source_id', 'snapshot_hash'], 'uq_5d56cebe841a');
         });
     }
 

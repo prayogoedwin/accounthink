@@ -58,7 +58,7 @@ return new class() extends Migration
             $table->foreignId('open_item_id')->constrained('accounting_ar_open_items')->cascadeOnDelete();
             $table->decimal('amount', 20, 2);
             $table->timestamps();
-            $table->unique(['receipt_id', 'open_item_id']);
+            $table->unique(['receipt_id', 'open_item_id'], 'uq_80762f3ba1f2');
         });
         Schema::create('accounting_ar_disputes', function (Blueprint $table): void {
             $table->id();

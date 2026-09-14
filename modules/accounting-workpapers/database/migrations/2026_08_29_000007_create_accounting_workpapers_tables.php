@@ -59,7 +59,7 @@ return new class() extends Migration
             $table->foreignId('target_workpaper_id')->constrained('accounting_workpapers')->cascadeOnDelete();
             $table->string('status', 32)->default('completed');
             $table->timestamps();
-            $table->unique(['source_workpaper_id', 'target_workpaper_id']);
+            $table->unique(['source_workpaper_id', 'target_workpaper_id'], 'uq_3da9a0b4cf2d');
         });
         Schema::create('accounting_workpaper_exports', function (Blueprint $table): void {
             $table->id();

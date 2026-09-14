@@ -63,7 +63,7 @@ return new class() extends Migration
             $t->boolean('active')->default(true);
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['team_id', 'journal_type']);
+            $t->unique(['team_id', 'journal_type'], 'uq_4497ad249676');
         });
     }
 

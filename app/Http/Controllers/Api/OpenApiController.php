@@ -48,7 +48,7 @@ class OpenApiController extends Controller
         return response()->json([
             'openapi' => '3.0.3',
             'info' => [
-                'title' => 'Liberu Accounting API',
+                'title' => 'Accounthink API',
                 'version' => '1.0.0',
                 'description' => 'Versioned REST API generated from the live routes. Authenticate with a Sanctum bearer token; each endpoint is scoped by token abilities (e.g. invoices:read, invoices:write).',
             ],

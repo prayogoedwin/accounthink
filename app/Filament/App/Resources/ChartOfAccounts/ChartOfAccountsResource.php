@@ -22,6 +22,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class ChartOfAccountsResource extends Resource
 {
@@ -91,7 +92,7 @@ class ChartOfAccountsResource extends Resource
                     ->numeric()
                     ->default(0)
                     ->step('0.01')
-                    ->prefix('$')
+                    ->prefix(fn (): string => AccountingMoney::symbol())
                     ->label('Opening Balance')
                     ->helperText('Initial balance for this account'),
 
@@ -100,7 +101,7 @@ class ChartOfAccountsResource extends Resource
                     ->disabled()
                     ->dehydrated(false)
                     ->default(0)
-                    ->prefix('$')
+                    ->prefix(fn (): string => AccountingMoney::symbol())
                     ->label('Current Balance')
                     ->helperText('Updated automatically by posted journal entries'),
 
@@ -142,7 +143,7 @@ class ChartOfAccountsResource extends Resource
                     ->badge()
                     ->label('Normal Balance'),
                 TextColumn::make('balance')
-                    ->money('usd')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->label('Current Balance'),
                 IconColumn::make('is_active')
                     ->boolean()

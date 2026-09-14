@@ -23,7 +23,7 @@ return new class() extends Migration
             $table->string('status', 24)->default('draft');
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'code', 'effective_from']);
+            $table->unique(['team_id', 'code', 'effective_from'], 'uq_59200ab68930');
         });
         Schema::create('accounting_withholding_tax_certificates', function (Blueprint $table): void {
             $table->id();
@@ -37,7 +37,7 @@ return new class() extends Migration
             $table->string('status', 24)->default('active');
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'certificate_ref']);
+            $table->unique(['team_id', 'certificate_ref'], 'uq_b8fef6809969');
         });
         Schema::create('accounting_withholding_tax_deductions', function (Blueprint $table): void {
             $table->id();
@@ -85,7 +85,7 @@ return new class() extends Migration
             $table->string('status', 24)->default('draft');
             $table->json('payload')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'jurisdiction', 'period_start', 'period_end']);
+            $table->unique(['team_id', 'jurisdiction', 'period_start', 'period_end'], 'uq_c1e7af8a2079');
         });
         Schema::create('accounting_withholding_tax_filing_adapters', function (Blueprint $table): void {
             $table->id();
@@ -95,7 +95,7 @@ return new class() extends Migration
             $table->string('status', 24)->default('configured');
             $table->json('configuration')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'jurisdiction', 'provider']);
+            $table->unique(['team_id', 'jurisdiction', 'provider'], 'uq_132e25d37ef9');
         });
     }
 

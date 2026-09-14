@@ -23,7 +23,7 @@ return new class() extends Migration
             $table->timestamp('submitted_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['team_id', 'tax_type', 'jurisdiction', 'period_start', 'period_end']);
+            $table->unique(['team_id', 'tax_type', 'jurisdiction', 'period_start', 'period_end'], 'uq_20a258a7b74f');
         });
         Schema::create('accounting_tax_return_lines', function (Blueprint $table): void {
             $table->id();

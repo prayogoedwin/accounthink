@@ -15,7 +15,7 @@ return new class() extends Migration
             $t->string('type', 32);
             $t->string('reference', 100);
             $t->string('status', 32)->default('draft');
-            $t->char('currency', 3)->default('USD');
+            $t->char('currency', 3)->default('IDR');
             $t->decimal('amount', 20, 2)->default(0);
             $t->json('payload')->nullable();
             $t->timestamp('submitted_at')->nullable();
@@ -23,8 +23,8 @@ return new class() extends Migration
             $t->text('rejected_reason')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['supplier_id', 'type', 'reference']);
-            $t->index(['supplier_id', 'type', 'status']);
+            $t->unique(['supplier_id', 'type', 'reference'], 'uq_cbfe0e977b97');
+            $t->index(['supplier_id', 'type', 'status'], 'ix_f17701e4d39d');
         });
         Schema::create('accounting_supplier_portal_documents', function (Blueprint $t): void {
             $t->id();

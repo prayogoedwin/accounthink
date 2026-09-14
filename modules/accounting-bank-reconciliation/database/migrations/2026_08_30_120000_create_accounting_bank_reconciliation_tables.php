@@ -24,7 +24,7 @@ return new class() extends Migration
             $table->unsignedBigInteger('signed_off_by')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['bank_account_id', 'period_start', 'period_end']);
+            $table->unique(['bank_account_id', 'period_start', 'period_end'], 'uq_befe74074be5');
         });
         Schema::create('accounting_bank_reconciliation_entries', function (Blueprint $table): void {
             $table->id();
@@ -43,7 +43,7 @@ return new class() extends Migration
             $table->timestamp('confirmed_at')->nullable();
             $table->unsignedBigInteger('confirmed_by')->nullable();
             $table->timestamps();
-            $table->index(['session_id', 'source_type', 'source_id']);
+            $table->index(['session_id', 'source_type', 'source_id'], 'ix_d5af8076e440');
         });
     }
 

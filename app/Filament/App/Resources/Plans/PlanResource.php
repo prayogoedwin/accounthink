@@ -17,6 +17,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use App\Support\AccountingMoney;
 
 class PlanResource extends Resource
 {
@@ -43,7 +44,7 @@ class PlanResource extends Resource
                 ->required(),
 
             TextInput::make('currency')
-                ->default('USD')
+                ->default('IDR')
                 ->required(),
 
             Select::make('interval')
@@ -67,7 +68,7 @@ class PlanResource extends Resource
                     ->sortable(),
 
                 TextColumn::make('amount')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('interval')

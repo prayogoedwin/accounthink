@@ -26,7 +26,7 @@ return new class() extends Migration
             $t->json('metadata')->nullable();
             $t->timestamps();
             $t->unique(['team_id', 'batch_ref']);
-            $t->index(['team_id', 'status', 'migration_date']);
+            $t->index(['team_id', 'status', 'migration_date'], 'ix_ca9f9dd04c7c');
         });
         Schema::create('accounting_opening_balance_entries', function (Blueprint $t): void {
             $t->id();
@@ -44,7 +44,7 @@ return new class() extends Migration
             $t->string('description', 255)->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->index(['batch_id', 'balance_type', 'reference_id']);
+            $t->index(['batch_id', 'balance_type', 'reference_id'], 'ix_058751c68dfb');
             $t->index(['batch_id', 'status']);
         });
         Schema::create('accounting_opening_balance_reconciliations', function (Blueprint $t): void {
@@ -59,7 +59,7 @@ return new class() extends Migration
             $t->text('notes')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['batch_id', 'entry_id']);
+            $t->unique(['batch_id', 'entry_id'], 'uq_bd4cabd75d69');
         });
         Schema::create('accounting_opening_balance_audits', function (Blueprint $t): void {
             $t->id();
@@ -69,7 +69,7 @@ return new class() extends Migration
             $t->json('payload');
             $t->char('payload_hash', 64);
             $t->timestamp('created_at');
-            $t->index(['batch_id', 'event_type', 'created_at']);
+            $t->index(['batch_id', 'event_type', 'created_at'], 'ix_b7d50a6f53df');
         });
     }
 

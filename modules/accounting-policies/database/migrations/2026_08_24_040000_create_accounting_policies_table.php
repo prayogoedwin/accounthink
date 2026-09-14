@@ -22,7 +22,7 @@ return new class() extends Migration
             $table->timestamp('approved_at')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->index(['book_id', 'category', 'key', 'effective_from']);
+            $table->index(['book_id', 'category', 'key', 'effective_from'], 'ix_2d59ade9a446');
             $table->index(['book_id', 'is_active']);
         });
     }

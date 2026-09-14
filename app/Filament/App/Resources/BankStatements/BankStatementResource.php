@@ -33,6 +33,7 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use App\Support\AccountingMoney;
 
 class BankStatementResource extends Resource
 {
@@ -75,7 +76,7 @@ class BankStatementResource extends Resource
                             ->label('Total Credits')
                             ->required()
                             ->numeric()
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->step(0.01)
                             ->helperText('Total credits on the statement'),
 
@@ -83,7 +84,7 @@ class BankStatementResource extends Resource
                             ->label('Total Debits')
                             ->required()
                             ->numeric()
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->step(0.01)
                             ->helperText('Total debits on the statement'),
 
@@ -91,7 +92,7 @@ class BankStatementResource extends Resource
                             ->label('Ending Balance')
                             ->required()
                             ->numeric()
-                            ->prefix('$')
+                            ->prefix(fn (): string => AccountingMoney::symbol())
                             ->step(0.01)
                             ->helperText('Ending balance on the statement'),
                     ])->columns(3),
@@ -127,17 +128,17 @@ class BankStatementResource extends Resource
 
                 TextColumn::make('total_credits')
                     ->label('Credits')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('total_debits')
                     ->label('Debits')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 TextColumn::make('ending_balance')
                     ->label('Ending Balance')
-                    ->money('USD')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->sortable(),
 
                 IconColumn::make('reconciled')

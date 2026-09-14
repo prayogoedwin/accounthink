@@ -35,7 +35,7 @@ return new class() extends Migration
             $table->text('error')->nullable();
             $table->json('payload')->nullable();
             $table->timestamps();
-            $table->unique(['connection_id', 'source_type', 'source_id']);
+            $table->unique(['connection_id', 'source_type', 'source_id'], 'uq_25a4bf01f57e');
         });
     }
 

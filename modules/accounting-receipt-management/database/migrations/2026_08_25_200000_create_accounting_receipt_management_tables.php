@@ -36,7 +36,7 @@ return new class() extends Migration
             $t->decimal('confidence', 8, 4)->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['receipt_id', 'target_type', 'target_id']);
+            $t->unique(['receipt_id', 'target_type', 'target_id'], 'uq_fb50df3f45d3');
         });
         Schema::create('accounting_missing_receipt_requests', function (Blueprint $t): void {
             $t->id();

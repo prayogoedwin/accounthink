@@ -17,7 +17,7 @@ return new class() extends Migration
             $table->string('status')->default('draft');
             $table->date('period_start');
             $table->date('period_end');
-            $table->char('currency', 3)->default('GBP');
+            $table->char('currency', 3)->default('IDR');
             $table->decimal('quantity', 20, 4)->default(0);
             $table->decimal('rate', 20, 4)->default(0);
             $table->decimal('amount', 20, 2)->default(0);
@@ -30,7 +30,7 @@ return new class() extends Migration
             $table->string('invoice_ref')->nullable();
             $table->json('metadata')->nullable();
             $table->timestamps();
-            $table->unique(['project_job_id', 'method', 'source_ref', 'period_start', 'period_end']);
+            $table->unique(['project_job_id', 'method', 'source_ref', 'period_start', 'period_end'], 'uq_da1990830940');
         });
     }
 

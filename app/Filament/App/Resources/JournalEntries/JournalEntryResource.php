@@ -28,6 +28,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
+use App\Support\AccountingMoney;
 
 class JournalEntryResource extends Resource
 {
@@ -107,7 +108,7 @@ class JournalEntryResource extends Resource
                                             ->numeric()
                                             ->default(0)
                                             ->step('0.01')
-                                            ->prefix('$')
+                                            ->prefix(fn (): string => AccountingMoney::symbol())
                                             ->live()
                                             ->afterStateUpdated(fn ($state, callable $set) => $state > 0 ? $set('credit_amount', 0) : null
                                             )
@@ -117,7 +118,7 @@ class JournalEntryResource extends Resource
                                             ->numeric()
                                             ->default(0)
                                             ->step('0.01')
-                                            ->prefix('$')
+                                            ->prefix(fn (): string => AccountingMoney::symbol())
                                             ->live()
                                             ->afterStateUpdated(fn ($state, callable $set) => $state > 0 ? $set('debit_amount', 0) : null
                                             )
@@ -203,7 +204,7 @@ class JournalEntryResource extends Resource
                     ->toggleable(),
                 TextColumn::make('total_debits')
                     ->label('Amount')
-                    ->money('usd')
+                    ->money(fn (): string => AccountingMoney::code())
                     ->getStateUsing(fn ($record) => $record->lines()->sum('debit_amount')),
                 IconColumn::make('is_posted')
                     ->boolean()

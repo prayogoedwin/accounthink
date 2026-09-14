@@ -46,7 +46,7 @@ return new class() extends Migration
             $t->text('error_message')->nullable();
             $t->json('metadata')->nullable();
             $t->timestamps();
-            $t->unique(['run_id', 'entity_type', 'source_id']);
+            $t->unique(['run_id', 'entity_type', 'source_id'], 'uq_0b1ed651e3b3');
             $t->index(['entity_type', 'source_id']);
         });
     }
