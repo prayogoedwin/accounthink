@@ -30,6 +30,7 @@ class ManageSiteSettings extends SettingsPage
             ->components([
                 Section::make('Appearance')
                     ->description('Site-wide theme. Users may still override this with their own preference.')
+                    ->hidden()
                     ->schema([
                         Select::make('active_theme')
                             ->label('Site Theme')
@@ -75,6 +76,7 @@ class ManageSiteSettings extends SettingsPage
 
                 Section::make('Social Media Links')
                     ->description('Add your social media profile URLs')
+                    ->hidden()
                     ->schema([
                         TextInput::make('facebook_url')
                             ->label('Facebook URL')
@@ -96,6 +98,7 @@ class ManageSiteSettings extends SettingsPage
                     ->columns(2),
 
                 Section::make('Footer')
+                    ->hidden()
                     ->schema([
                         Textarea::make('footer_copyright')
                             ->label('Copyright Text')

@@ -22,10 +22,12 @@ class ListBankConnections extends ListRecords
     {
         return [
             Actions\CreateAction::make()
-                ->label('Manual Connection'),
+                ->label('Manual Connection')
+                ->hidden(),
 
             Action::make('connect_plaid')
                 ->label('Connect via Plaid')
+                ->hidden()
                 ->icon('heroicon-o-link')
                 ->color('primary')
                 ->action(function () {

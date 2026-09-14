@@ -73,6 +73,7 @@ class BankConnectionResource extends Resource
                     ])->columns(2),
 
                 Section::make('Plaid Integration')
+                    ->hidden()
                     ->schema([
                         TextInput::make('plaid_item_id')
                             ->label('Plaid Item ID')
@@ -131,6 +132,7 @@ class BankConnectionResource extends Resource
 
                 TextColumn::make('plaid_item_id')
                     ->label('Plaid Connected')
+                    ->hidden()
                     ->formatStateUsing(fn ($state): string => $state ? 'Yes' : 'No')
                     ->badge()
                     ->color(fn ($state): string => $state ? 'success' : 'gray')
@@ -164,6 +166,7 @@ class BankConnectionResource extends Resource
 
                 Tables\Filters\TernaryFilter::make('plaid_connected')
                     ->label('Plaid Connected')
+                    ->hidden()
                     ->queries(
                         true: fn ($query) => $query->whereNotNull('plaid_item_id'),
                         false: fn ($query) => $query->whereNull('plaid_item_id'),
@@ -178,7 +181,9 @@ class BankConnectionResource extends Resource
                     ->icon('heroicon-o-arrow-path')
                     ->color('primary')
                     ->visible(fn (BankConnection $record): bool => $record->plaid_item_id !== null)
+                    ->hidden()
                     ->requiresConfirmation()
+                    ->hidden()
                     ->action(function (BankConnection $record): void {
                         try {
                             $plaidService = app(PlaidService::class);
@@ -207,6 +212,7 @@ class BankConnectionResource extends Resource
                     ->icon('heroicon-o-x-mark')
                     ->color('danger')
                     ->visible(fn (BankConnection $record): bool => $record->plaid_item_id !== null)
+                    ->hidden()
                     ->requiresConfirmation()
                     ->modalHeading('Disconnect Bank Connection')
                     ->modalDescription('Are you sure you want to disconnect this bank? This will remove the Plaid connection but keep historical transaction data.')

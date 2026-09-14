@@ -32,6 +32,7 @@ class ViewBankConnection extends ViewRecord
                 ->icon('heroicon-o-arrow-path')
                 ->color('primary')
                 ->visible(fn (): bool => $this->record->plaid_item_id !== null)
+                ->hidden()
                 ->action(function (): void {
                     try {
                         $plaidService = app(PlaidService::class);

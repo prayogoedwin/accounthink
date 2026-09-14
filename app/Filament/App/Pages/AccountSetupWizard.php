@@ -88,9 +88,9 @@ class AccountSetupWizard extends Page
                     Step::make('Connections')
                         ->description('Add credentials only for services you plan to use.')
                         ->schema([
-                            TextInput::make('integrations.plaid.client_id')->label('Plaid client ID')->helperText('Required for bank feeds.')->maxLength(255),
-                            TextInput::make('integrations.plaid.secret')->label('Plaid secret')->password()->revealable()->maxLength(255),
-                            TextInput::make('integrations.plaid.webhook_verification_key')->label('Plaid webhook verification key')->password()->revealable()->maxLength(255),
+                            TextInput::make('integrations.plaid.client_id')->label('Plaid client ID')->helperText('Required for bank feeds.')->maxLength(255)->hidden(),
+                            TextInput::make('integrations.plaid.secret')->label('Plaid secret')->password()->revealable()->maxLength(255)->hidden(),
+                            TextInput::make('integrations.plaid.webhook_verification_key')->label('Plaid webhook verification key')->password()->revealable()->maxLength(255)->hidden(),
                             TextInput::make('integrations.qbo.client_id')->label('QuickBooks client ID')->maxLength(255),
                             TextInput::make('integrations.qbo.client_secret')->label('QuickBooks client secret')->password()->revealable()->maxLength(255),
                             TextInput::make('integrations.qbo.webhook_verifier_token')->label('QuickBooks webhook verifier token')->password()->revealable()->maxLength(255),
